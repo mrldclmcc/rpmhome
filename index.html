@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="color-scheme" content="light" />
+<title>RPM Home Program — 3-Week Ramp + 36-Session Training Plan</title>
+<style>
+  :root{
+    --bg:#f5f6f3;
+    --panel:#ffffff;
+    --ink:#1c2521;
+    --muted:#5b6660;
+    --line:#d9dfda;
+    --soft:#eef2ee;
+    --accent:#1f6f5b;
+    --accent-2:#2c8a71;
+    --accent-soft:#e3f0eb;
+    --amber:#a96612;
+    --amber-soft:#fff1dc;
+    --blue:#315d8b;
+    --blue-soft:#e7eef7;
+    --danger:#a34242;
+    --danger-soft:#f8e7e7;
+    --shadow:0 8px 28px rgba(25,34,30,.07);
+    --radius:16px;
+    --radius-sm:11px;
+    --max:1180px;
+    --sans:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.5;
+  }
+  a{color:var(--accent);text-underline-offset:3px}
+  button,input{font:inherit}
+  button{cursor:pointer}
+  :focus-visible{outline:3px solid #7bbca9;outline-offset:3px}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+  header{
+    background:linear-gradient(135deg,#183c31 0%,#1f6f5b 70%,#2d8b72 100%);
+    color:white;
+    padding:38px 0 30px;
+  }
+  .eyebrow{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;opacity:.82;font-weight:700}
+  h1{font-size:clamp(2rem,4vw,3.35rem);line-height:1.05;margin:8px 0 12px;letter-spacing:-.03em}
+  .lede{font-size:1.06rem;max-width:820px;color:#e8f3ef;margin:0}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .chip{display:inline-flex;align-items:center;gap:7px;padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);font-size:.88rem}
+  nav.topnav{
+    position:sticky;top:0;z-index:20;
+    background:rgba(245,246,243,.94);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{display:flex;gap:6px;overflow:auto;padding:8px 0}
+  .nav-inner a{white-space:nowrap;text-decoration:none;padding:8px 11px;border-radius:10px;color:var(--muted);font-size:.9rem}
+  .nav-inner a:hover,.nav-inner a:focus-visible{background:var(--soft);color:var(--ink)}
+  main{padding:26px 0 50px}
+  section{margin:28px 0}
+  .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:13px}
+  h2{margin:0;font-size:1.55rem;letter-spacing:-.02em}
+  h3{margin:0;font-size:1.06rem}
+  .section-note{margin:4px 0 0;color:var(--muted);font-size:.93rem;max-width:820px}
+  .grid{display:grid;gap:14px}
+  .stats{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .card,.stat,.callout,.panel,.session{
+    background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)
+  }
+  .stat{padding:17px}
+  .stat .num{font-size:1.55rem;font-weight:800;color:var(--accent)}
+  .stat .lbl{font-size:.85rem;color:var(--muted);margin-top:2px}
+  .panel{padding:18px}
+  .two{grid-template-columns:1fr 1fr}
+  .three{grid-template-columns:repeat(3,1fr)}
+  .callout{padding:15px 17px;border-left:5px solid var(--accent)}
+  .callout.amber{border-left-color:var(--amber);background:linear-gradient(90deg,var(--amber-soft),#fff 55%)}
+  .callout.blue{border-left-color:var(--blue);background:linear-gradient(90deg,var(--blue-soft),#fff 55%)}
+  .callout h3{margin-bottom:6px}
+  .clean-list{margin:9px 0 0;padding-left:19px}
+  .clean-list li{margin:5px 0}
+  .rule-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  .rule{padding:14px;border:1px solid var(--line);border-radius:var(--radius-sm);background:#fbfcfb}
+  .rule .tag{display:inline-block;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;font-weight:800;color:var(--accent);margin-bottom:4px}
+  .rule p{margin:0;color:var(--muted);font-size:.92rem}
+  .tabs{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 14px}
+  .tab{
+    border:1px solid var(--line);background:var(--panel);color:var(--muted);padding:9px 12px;border-radius:11px;font-weight:700
+  }
+  .tab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:white}
+  .session-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  .session{overflow:hidden}
+  .session-top{padding:15px 16px 12px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#fff,#fafcfb)}
+  .session-title-row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .session-name{font-weight:800;font-size:1.05rem}
+  .micro{font-size:.76rem;color:var(--muted);margin-top:3px}
+  .complete-wrap{display:flex;align-items:center;gap:7px;color:var(--muted);font-size:.8rem;white-space:nowrap}
+  .complete-wrap input{width:18px;height:18px;accent-color:var(--accent)}
+  .session-body{padding:12px 14px 14px}
+  .blocks{display:grid;gap:9px}
+  .block{
+    border:1px solid var(--line);border-radius:12px;padding:11px 12px;background:#fbfcfb
+  }
+  .block-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:4px}
+  .block-name{font-weight:800;font-size:.92rem}
+  .badge{font-size:.7rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:4px 7px;border-radius:7px}
+  .h{background:var(--danger-soft);color:var(--danger)}
+  .m{background:var(--blue-soft);color:var(--blue)}
+  .l{background:var(--accent-soft);color:var(--accent)}
+  .e{background:var(--amber-soft);color:var(--amber)}
+  .block p{margin:4px 0 0;font-size:.88rem;color:#35413b}
+  .cue{margin-top:6px;padding-top:6px;border-top:1px dashed #d6ddd7;color:var(--muted);font-size:.8rem}
+  .session-foot{display:flex;justify-content:space-between;gap:10px;padding:10px 14px 13px;border-top:1px solid var(--line);color:var(--muted);font-size:.78rem}
+  .week-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+  .week{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+  .week-head{padding:15px 16px;background:var(--soft);border-bottom:1px solid var(--line)}
+  .week-head strong{display:block;font-size:1rem}
+  .week-head span{font-size:.82rem;color:var(--muted)}
+  .ramp-session{padding:14px 15px;border-bottom:1px solid var(--line)}
+  .ramp-session:last-child{border-bottom:0}
+  .ramp-session strong{font-size:.93rem}
+  .ramp-session p{margin:4px 0 0;color:var(--muted);font-size:.84rem}
+  details{border:1px solid var(--line);border-radius:12px;background:var(--panel)}
+  details+details{margin-top:8px}
+  summary{cursor:pointer;padding:12px 14px;font-weight:800;list-style:none}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";float:right;color:var(--muted);font-size:1.05rem}
+  details[open] summary::after{content:"–"}
+  .details-body{padding:0 14px 14px;color:var(--muted);font-size:.9rem}
+  .equipment{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .equip{padding:12px;border:1px solid var(--line);border-radius:12px;background:#fbfcfb}
+  .equip strong{display:block;font-size:.88rem}
+  .equip span{display:block;color:var(--muted);font-size:.8rem;margin-top:3px}
+  .footer-note{color:var(--muted);font-size:.82rem;margin-top:20px}
+  .toolbar{display:flex;gap:8px;flex-wrap:wrap}
+  .small-btn{border:1px solid var(--line);background:var(--panel);padding:8px 10px;border-radius:10px;color:var(--muted);font-weight:700;font-size:.82rem}
+  .small-btn:hover{background:var(--soft);color:var(--ink)}
+  .hide{display:none !important}
+  .print-only{display:none}
+  @media (max-width: 900px){
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .two,.three,.session-grid,.week-grid{grid-template-columns:1fr}
+    .equipment{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width: 560px){
+    .wrap{padding:0 14px}
+    header{padding:28px 0 24px}
+    .stats{grid-template-columns:1fr 1fr;gap:9px}
+    .stat{padding:13px}
+    .equipment{grid-template-columns:1fr}
+    .session-foot{display:block}
+  }
+  @media print{
+    nav.topnav,.toolbar,.tabs,.small-btn{display:none !important}
+    body{background:white}
+    header{color:#000;background:white;padding-bottom:10px}
+    .lede{color:#333}
+    .chip{color:#000;border-color:#bbb;background:#fff}
+    .card,.stat,.callout,.panel,.session,.week{box-shadow:none}
+    .print-only{display:block}
+    .session-grid{grid-template-columns:1fr 1fr}
+    details{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="eyebrow">Home equipment adaptation • RPM structure</div>
+    <h1>RPM Home Program</h1>
+    <p class="lede">A self-contained strength, work-capacity, and conditioning plan built around a 3-week ramp-up and 36 main sessions. It is designed for three training days most weeks, with occasional two- or four-day weeks.</p>
+    <div class="hero-meta">
+      <span class="chip">3-week ramp</span>
+      <span class="chip">36 main sessions</span>
+      <span class="chip">3 × 12-session blocks</span>
+      <span class="chip">3 days/week default</span>
+      <span class="chip">EMOM / clock-based</span>
+    </div>
+  </div>
+</header>
+
+<nav class="topnav" aria-label="Program sections">
+  <div class="wrap nav-inner">
+    <a href="#start">Start here</a>
+    <a href="#equipment">Equipment</a>
+    <a href="#ramp">Ramp-up</a>
+    <a href="#main-program">36 sessions</a>
+    <a href="#rules">Rules</a>
+    <a href="#glossary">Exercise guide</a>
+  </div>
+</nav>
+
+<main>
+<div class="wrap">
+  <section id="start">
+    <div class="section-head">
+      <div>
+        <h2>Start here</h2>
+        <p class="section-note">This is a complete home version. You do not need the original RPM program to use it.</p>
+      </div>
+      <div class="toolbar">
+        <button class="small-btn" type="button" id="printBtn">Print / save PDF</button>
+        <button class="small-btn" type="button" id="clearBtn">Clear completion marks</button>
+      </div>
+    </div>
+    <div class="grid stats">
+      <div class="stat"><div class="num">3 weeks</div><div class="lbl">Ramp-up before the main program</div></div>
+      <div class="stat"><div class="num">36</div><div class="lbl">Main training sessions</div></div>
+      <div class="stat"><div class="num">12 + 12 + 12</div><div class="lbl">Three progressive blocks</div></div>
+      <div class="stat"><div class="num">~40 min</div><div class="lbl">Main work, plus warm-up</div></div>
+    </div>
+    <div class="grid two" style="margin-top:14px">
+      <div class="callout">
+        <h3>What this program is for</h3>
+        <p>This program builds general strength, work capacity, conditioning, movement skill, and useful athletic ability. It is not a peak program for a one-repetition maximum.</p>
+      </div>
+      <div class="callout amber">
+        <h3>The main idea</h3>
+        <p>Use the clock, but do not race it. Start work at the top of each minute. Finish the work with good form. Use the remaining time to recover.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="equipment">
+    <div class="section-head">
+      <div>
+        <h2>Equipment and how to use it</h2>
+        <p class="section-note">The program is built around these exact constraints. Do not try to turn them into a barbell gym.</p>
+      </div>
+    </div>
+    <div class="equipment">
+      <div class="equip"><strong>200 lb handleless sandbag</strong><span>Use for shouldering, bear-hug carries, and selected bear-hug squats. It is an awkward-object tool, not a barbell replacement.</span></div>
+      <div class="equip"><strong>35 / 50 / 70 / 100 lb kettlebells</strong><span>Single kettlebells only. Use unilateral work, offset loading, suitcase carries, swings, and selected bilateral goblet work.</span></div>
+      <div class="equip"><strong>Pull-up bar</strong><span>Pull-ups, chin-ups, hanging knee raises, and related bodyweight work.</span></div>
+      <div class="equip"><strong>Dip bars</strong><span>Weighted dips, supported push-up variations, and other stable upper-body work.</span></div>
+      <div class="equip"><strong>25 lb vest / ruck</strong><span>Progress bodyweight work: pull-ups, dips, push-ups, split squats, lunges, and walking.</span></div>
+      <div class="equip"><strong>Stable chair, only if needed</strong><span>Use for controlled box-squat or step-up variations only when the chair is very stable. Never drop onto the chair.</span></div>
+    </div>
+  </section>
+
+  <section id="rules">
+    <div class="section-head">
+      <div>
+        <h2>Rules that make the program work</h2>
+        <p class="section-note">Read these before the first session. They are part of the program, not optional notes.</p>
+      </div>
+    </div>
+    <div class="rule-grid">
+      <div class="rule"><div class="tag">Clock</div><p>Most blocks are 10-minute EMOMs. Start at the top of each minute. Do the work, then rest. If the work takes too long, reduce reps or load.</p></div>
+      <div class="rule"><div class="tag">Effort</div><p>Light = about 4–5 good reps left. Medium = about 3 reps left. Heavy = about 2 reps left. Never grind a rep to finish the minute.</p></div>
+      <div class="rule"><div class="tag">Speed</div><p>Move with intent. When the movement becomes slow or the technique changes, the set is too hard. Clean reps matter more than the number on the bell.</p></div>
+      <div class="rule"><div class="tag">Unilateral work</div><p>For alternating-side blocks, use odd minutes for the right side and even minutes for the left side. The weaker side sets the rep target.</p></div>
+      <div class="rule"><div class="tag">Sandbag</div><p>A 200 lb sandbag is a fixed, awkward load. If you cannot move it safely, do not force a lift. Use a listed kettlebell or bodyweight substitute.</p></div>
+      <div class="rule"><div class="tag">Scheduling</div><p>Three training days is the normal week. Keep the four-session sequence rolling. Do not restart the program after a missed day and do not combine two sessions to catch up.</p></div>
+      <div class="rule"><div class="tag">Progression</div><p>When a bell becomes too easy, first make the movement harder: more difficult leverage, cleaner pause, better range, or a harder variation. Then move to the next bell.</p></div>
+      <div class="rule"><div class="tag">Recovery</div><p>Prefer at least one day between sessions when possible. After a very demanding sandbag day, take extra recovery if your next session feels poor.</p></div>
+    </div>
+  </section>
+
+  <section id="ramp">
+    <div class="section-head">
+      <div>
+        <h2>3-week ramp-up</h2>
+        <p class="section-note">The ramp restores tolerance to training frequency, full-body work, repeated sets, and conditioning. It is not a test of how much strength you still have.</p>
+      </div>
+    </div>
+    <div class="grid week-grid">
+      <div class="week">
+        <div class="week-head"><strong>Ramp Week 1</strong><span>3 sessions • 3 × 8-minute blocks • RPE 5–6</span></div>
+        <div class="ramp-session"><strong>R1 — Squat / Row / Press</strong><p>8-min goblet squat EMOM, 8-min 1-arm row alternating sides, 8-min half-kneeling 1-arm press alternating sides.</p></div>
+        <div class="ramp-session"><strong>R2 — Hinge / Pull / Push</strong><p>8-min single-leg RDL alternating sides, 8-min pull-up or chin-up EMOM, 8-min push-up EMOM. Finish fresh.</p></div>
+        <div class="ramp-session"><strong>R3 — Split Squat / Carry / Dip</strong><p>8-min split squat alternating sides, 8-min suitcase carry alternating sides, 8-min dips or assisted dips. No hard finisher.</p></div>
+      </div>
+      <div class="week">
+        <div class="week-head"><strong>Ramp Week 2</strong><span>3 sessions • 3 × 10-minute blocks • RPE 5–6.5</span></div>
+        <div class="ramp-session"><strong>R4 — Heavy-ish split / Carry / Press</strong><p>10-min RFESS alternating sides, 10-min suitcase carry, 10-min 1-arm strict press. Add a small amount of easy core work only if recovery is excellent.</p></div>
+        <div class="ramp-session"><strong>R5 — Goblet squat / Row / Dip + easy swing</strong><p>10-min paused goblet squat, 10-min 1-arm row, 10-min weighted or bodyweight dips, then optional easy swings for 6 minutes.</p></div>
+        <div class="ramp-session"><strong>R6 — Hinge / Pull-up / Push-up</strong><p>10-min 2-hand KB swing, 10-min pull-ups or chin-ups, 10-min weighted push-ups. Keep every set crisp.</p></div>
+      </div>
+      <div class="week">
+        <div class="week-head"><strong>Ramp Week 3</strong><span>3 sessions • 4 × 8–10-minute blocks • RPE 6–7</span></div>
+        <div class="ramp-session"><strong>R7 — Heavy lower / Carry / Press / Core</strong><p>10-min RFESS, 10-min suitcase carry, 10-min 1-arm press, 8-min hanging knee raise + easy row rotation.</p></div>
+        <div class="ramp-session"><strong>R8 — Squat / Row / Dips / Conditioning</strong><p>10-min goblet or front-rack squat, 10-min 1-arm row, 10-min dips, 8-min swing + easy burpee pattern.</p></div>
+        <div class="ramp-session"><strong>R9 — Sandbag practice / Pull / Press / Core</strong><p>8–10 min controlled sandbag carry or 1 shoulder every 2 minutes, 10-min pull-ups, 10-min 1-arm floor press, 8-min suitcase march + hanging work.</p></div>
+      </div>
+    </div>
+    <div class="callout blue" style="margin-top:14px">
+      <h3>Ready for Session 1?</h3>
+      <p>You should finish the ramp feeling that you could have done a little more. You should have no major soreness that carries into the next session, and your last set should still look like a good repetition.</p>
+    </div>
+  </section>
+
+  <section id="main-program">
+    <div class="section-head">
+      <div>
+        <h2>36-session main program</h2>
+        <p class="section-note">Run the sessions in order. These are 36 training sessions, not 36 calendar days. At three sessions per week, the program will usually take about 12 weeks.</p>
+      </div>
+    </div>
+    <div class="tabs" role="tablist" aria-label="Program blocks">
+      <button class="tab" role="tab" aria-selected="true" aria-controls="block1" id="tab1">Block 1 · Base</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="block2" id="tab2">Block 2 · Build</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="block3" id="tab3">Block 3 · Integrate</button>
+    </div>
+
+    <div id="block1" role="tabpanel" aria-labelledby="tab1"></div>
+    <div id="block2" role="tabpanel" aria-labelledby="tab2" class="hide"></div>
+    <div id="block3" role="tabpanel" aria-labelledby="tab3" class="hide"></div>
+
+    <div class="footer-note">Session labels: H = heavy, M = medium, L = light, E = conditioning/event. “Heavy” never means maximal. This program should leave the athlete able to train again.</div>
+  </section>
+
+  <section id="glossary">
+    <div class="section-head">
+      <div>
+        <h2>Exercise guide and special formats</h2>
+        <p class="section-note">These definitions explain the movements that are easy to misunderstand in a home setup.</p>
+      </div>
+    </div>
+    <div class="grid two">
+      <div>
+        <details open>
+          <summary>Alternating-side EMOM</summary>
+          <div class="details-body">Minute 1: right side. Minute 2: left side. Repeat for 10 minutes. This gives five work sets per side without forcing both sides into one crowded minute.</div>
+        </details>
+        <details>
+          <summary>Suitcase carry or march</summary>
+          <div class="details-body">Hold one kettlebell at the side. Walk 20–40 feet, or march in place if space is limited. Keep the torso quiet. Do not lean away from the weight.</div>
+        </details>
+        <details>
+          <summary>Sandbag shoulder</summary>
+          <div class="details-body">Use a controlled ground-to-lap-to-shoulder sequence. Alternate shoulders. One clean rep is better than several rushed reps. If the bag cannot be moved safely, use the listed substitute.</div>
+        </details>
+        <details>
+          <summary>Sandbag bear-hug carry</summary>
+          <div class="details-body">Hug the bag tightly against the torso and walk. Keep steps short and posture controlled. Start with short distances. The goal is strong, steady locomotion, not a collapse at the end.</div>
+        </details>
+      </div>
+      <div>
+        <details open>
+          <summary>Offset / coiling work</summary>
+          <div class="details-body">Use one-sided loading to make the trunk organize force while the limbs move. Do not twist violently. Keep the movement controlled and purposeful. This is a training method, not a requirement to rotate during every one-sided exercise.</div>
+        </details>
+        <details>
+          <summary>Heavy, medium, and light</summary>
+          <div class="details-body">Heavy should feel demanding but clean, usually with about two good reps left. Medium leaves about three. Light leaves about four or five. If the bell jumps from “easy” to “too hard,” keep the same bell and use a more demanding or less demanding variation.</div>
+        </details>
+        <details>
+          <summary>Bodyweight progression</summary>
+          <div class="details-body">Progress from bodyweight to the 25-lb vest. You can also change leverage: feet elevated, range of motion, pause, or stance. Do not chase failure.</div>
+        </details>
+        <details>
+          <summary>Why this is not a barbell copy</summary>
+          <div class="details-body">This version keeps the original program's full-body, clock-based, undulating idea, but it uses carries, awkward objects, unilateral loading, kettlebell power work, and calisthenics because those are the best tools available in this environment.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="callout amber">
+      <h3>Stop or scale the set when</h3>
+      <p>You lose control of the movement, the bag becomes unsafe, the rep becomes a grind, the clock forces rushed technique, or pain changes the way you move. Reduce reps, reduce the movement difficulty, or end the block. Do not “win” the minute by using poor form.</p>
+    </div>
+    <p class="footer-note">This program is a training plan, not medical advice. Use sound judgment with the sandbag, especially when lifting it from the floor or to the shoulder. A stable training area and safe landing space for any jumping work are required.</p>
+  </section>
+</div>
+</main>
+
+<script>
+(function(){
+  const LS = 'rpm-home-program-completed-v1';
+  const completed = JSON.parse(localStorage.getItem(LS) || '{}');
+
+  const blocks = {
+    1:{
+      label:'Base',
+      effort:'H ≈ RPE 7 • M ≈ RPE 6–7 • L ≈ RPE 5–6',
+      notes:'Build tolerance, clean technique, and repeatable work. Keep conditioning controlled.',
+      sessions:[
+        ['1','Heavy split squat / Carry / Press / Core','H','Front-foot or rear-foot elevated split squat, alternating minutes. Use 50–100 lb KB as needed.','L','Suitcase carry, alternate sides each minute, 20–40 ft.','M','1-arm strict press, alternate sides, 4–6 reps.','C','Odd: pull-up or row. Even: hanging knee raise.'],
+        ['2','Goblet squat / Row / Dip / Conditioning','L','Goblet squat, 5–8 reps. Touch a stable chair only if useful.','M','1-arm KB row, alternate sides, 5–8 reps.','H','Dips, 3–6 clean reps. Add vest only when bodyweight is clearly easy.','E','8–12 two-hand swings + 3–5 easy burpees each minute.'],
+        ['3','Single-leg hinge / Pull-up / Half-kneeling press / Core','M','Single-leg RDL, alternate sides, 4–6 reps.','H','Weighted pull-up or chin-up, 2–5 reps. Bodyweight is fine if needed.','L','Half-kneeling 1-arm press, alternate sides, 5–7 reps.','C','Suitcase march 20–30 sec, then hanging knee raises.'],
+        ['4','Bear-hug squat / Sandbag carry / Push-up / Conditioning','H','200 lb bear-hug squat only if safe; otherwise heavy KB split squat, 3–5 reps.','E','Bear-hug sandbag carry, short clean trips at the top of the minute.','M','Weighted push-up, 5–10 reps.','E','10 swings + 5 reverse lunges total.'],
+        ['5','Front-rack split squat / Carry / Push press / Core','H','Front-rack split squat, alternating minutes, 3–5 reps.','L','Suitcase carry, alternate sides.','M','1-arm push press, alternate sides, 3–5 reps.','C','Odd: pull-ups/inverted-style row substitute. Even: hanging knee raise.'],
+        ['6','Paused squat / Row / Dip / Swings','L','Paused goblet squat, 4–6 reps with a 2-second pause.','M','1-arm row, slightly heavier than Session 2 if clean.','H','Weighted dips, 3–5 reps.','E','Two-hand swings, 10–15 reps. Stop well before form slows.'],
+        ['7','Swing / Pull-up / Half-kneeling press / Offset core','M','Two-hand KB swing, 8–12 crisp reps.','H','Weighted chin-up, 2–5 reps.','L','Half-kneeling 1-arm press, 5–7 reps.','C','Suitcase march: 20–30 sec right/left on alternating minutes.'],
+        ['8','Sandbag shoulder practice / Sandbag carry / Floor press / Conditioning','H','Sandbag shoulder: 1 clean rep per minute, alternate shoulders. If unsafe, use heavy KB split squat.','E','Bear-hug sandbag carry, short trips.','M','1-arm KB floor press, alternate sides, 5–7 reps.','E','6–10 swings + 3 burpees.'],
+        ['9','Heavy goblet or split squat / Carry / Strict press / Core','H','100 lb goblet squat or heavy split squat, 3–5 reps.','L','Suitcase carry, use the heaviest bell that keeps the torso level.','M','1-arm strict press, 4–6 reps.','C','Odd: pull-up. Even: hanging knee raise.'],
+        ['10','Front-foot elevated split squat / Row / Weighted push-up / Conditioning','L','Front-foot elevated split squat, 5–7 reps per side.','M','1-arm KB row, 5–8 reps.','H','Weighted push-up, 5–10 reps.','E','8–12 swings + 5 mountain climbers per side.'],
+        ['11','Contralateral RDL / Pull-up / Half-kneeling press / Core','M','Single-leg RDL with opposite-hand load, 4–6 reps per side.','H','Pull-up or chin-up, 2–5 reps.','L','Half-kneeling 1-arm press, 5–7 reps.','C','Controlled coiling reverse lunge, bodyweight or 35 lb, alternating sides.'],
+        ['12','Sandbag shoulder or squat / Bear-hug carry / Dip / Conditioning','H','Sandbag shoulder, 1 rep per minute, alternate shoulders; or heavy sandbag bear-hug squat if that is the safer movement.','E','Bear-hug carry, short trips.','M','Dips, 3–6 reps.','E','10 swings + 5 bodyweight squats.']
+      ]
+    },
+    2:{
+      label:'Build',
+      effort:'H ≈ RPE 7–7.5 • M ≈ RPE 7 • L ≈ RPE 6',
+      notes:'Use harder variations, slightly heavier bells, or slightly more work. Keep every rep clean.',
+      sessions:[
+        ['13','Heavy RFESS / Suitcase carry / Strict press / Core','H','RFESS, use a harder leverage or heavier bell than Block 1. Alternate sides.','L','Suitcase carry, 20–40 ft, alternate sides.','M','1-arm strict press, 3–5 reps.','C','Odd: 2–5 pull-ups. Even: 5–8 hanging knee raises.'],
+        ['14','Paused goblet squat / Row / Weighted dip / Conditioning','L','Paused goblet squat, 5–7 reps.','M','1-arm row, heavier or with a 1-second squeeze.','H','Dips with vest if possible, 3–5 reps.','E','10–15 swings + 3–5 burpees.'],
+        ['15','Single-leg RDL / Weighted chin / Push press / Core','M','Contralateral single-leg RDL, 4–5 reps per side.','H','Weighted chin-up, 2–4 reps.','L','1-arm push press, 4–6 reps.','C','Suitcase march 20–30 sec each side on alternating minutes.'],
+        ['16','Heavy split squat / Sandbag bear-hug carry / Push-up / Conditioning','H','Heavy split squat or safe sandbag bear-hug squat.','E','Sandbag bear-hug carry, slightly longer trips than Block 1 if posture stays tall.','M','Weighted push-up, 5–8 reps.','E','Swing + reverse lunge: 8 swings, 4 total lunges.'],
+        ['17','Front-rack reverse lunge / Carry / Push press / Core','H','Front-rack reverse lunge, alternate sides, 3–5 reps.','L','Suitcase carry, use 70 or 100 if posture remains strong.','M','1-arm push press, 3–5 reps.','C','Odd: pull-up. Even: hanging knee raise.'],
+        ['18','Tempo squat / Row / Dip / Swings','L','3-second lowering goblet squat, 4–6 reps.','M','1-arm row, 5–7 reps.','H','Weighted dips, 3–5 reps.','E','Two-hand swings, 10–15 reps.'],
+        ['19','Heavy swing / Pull-up / Floor press / Core','M','Two-hand swing, 10 crisp reps with the heaviest bell you can move fast.','H','Weighted pull-up/chin-up, 2–4 reps.','L','1-arm floor press, 5–7 reps.','C','Suitcase march + controlled hanging knee raise.'],
+        ['20','Sandbag shoulder / Sandbag carry / Half-kneeling press / Conditioning','H','Sandbag shoulder, 1 rep per minute. If the bag is too demanding, use a heavy KB split squat.','E','Bear-hug carry, short and fast enough to preserve posture.','M','Half-kneeling 1-arm press, 4–6 reps.','E','6–10 swings + 3 burpees.'],
+        ['21','Heavy goblet squat / Carry / Strict press / Core','H','100 lb goblet squat or harder split-squat leverage, 3–5 reps.','L','Suitcase carry, 20–40 ft.','M','1-arm strict press, 3–5 reps.','C','Odd: pull-up. Even: hanging knee raise.'],
+        ['22','Elevated split squat / Row / Weighted push-up / Conditioning','L','Front-foot elevated split squat, 5–7 reps per side.','M','1-arm row, 5–7 reps.','H','Feet-elevated or vest push-up, 5–8 reps.','E','8–12 swings + 5 mountain climbers per side.'],
+        ['23','Coiling lunge / Weighted pull-up / Half-kneeling press / Core','M','Controlled coiling reverse lunge, alternating sides. Use 35–70 lb only if posture is excellent.','H','Weighted pull-up/chin-up, 2–4 reps.','L','Half-kneeling press, 5–7 reps.','C','Suitcase carry with a deliberate, controlled turn at the end of each trip.'],
+        ['24','Sandbag shoulder / Bear-hug carry / Dip / Conditioning','H','Sandbag shoulder, alternate shoulders, 1 rep each minute.','E','Bear-hug carry, 20–40 ft.','M','Dips, 3–5 reps.','E','10 swings + 5 squats.']
+      ]
+    },
+    3:{
+      label:'Integrate',
+      effort:'H ≈ RPE 7.5–8 • M ≈ RPE 7–7.5 • L ≈ RPE 6–6.5',
+      notes:'Express the strength and work capacity built earlier. Heavy means strong and fast, never a max effort.',
+      sessions:[
+        ['25','Heavy split squat / Heavy carry / Strict press / Core','H','Hardest safe split-squat variation available, 2–4 reps per side.','L','70–100 lb suitcase carry, 20–40 ft, clean posture.','M','1-arm strict press, 3–5 reps.','C','Odd: weighted pull-up. Even: hanging knee raise.'],
+        ['26','Goblet squat / Heavy row / Weighted dip / Conditioning','L','Goblet squat, 5–7 reps with full control.','M','Heavy 1-arm row, 4–6 reps.','H','Weighted dips, 2–5 reps.','E','8–12 swings + 3–5 burpees.'],
+        ['27','Contralateral RDL / Weighted pull-up / Push press / Core','M','Contralateral single-leg RDL, 3–5 reps per side.','H','Weighted pull-up/chin-up, 2–4 reps.','L','1-arm push press, 3–5 reps.','C','Suitcase march 20–30 sec per side.'],
+        ['28','Sandbag bear-hug squat / Carry / Weighted push-up / Conditioning','H','200 lb bear-hug squat only if technically strong and safe; otherwise heavy split squat.','E','Sandbag bear-hug carry. Use short trips and stop before posture breaks.','M','Vest push-up, 5–8 reps.','E','Swing + reverse lunge: 8 swings, 4 lunges total.'],
+        ['29','Front-rack reverse lunge / Carry / Push press / Core','H','Hard front-rack reverse lunge, 2–4 reps per side.','L','Suitcase carry, 20–40 ft.','M','1-arm push press, 3–5 reps.','C','Odd: pull-up. Even: hanging knee raise.'],
+        ['30','Paused goblet squat / Row / Dip / Swings','L','Paused goblet squat, 4–6 reps.','M','1-arm row with a 1-second squeeze, 4–6 reps.','H','Weighted dip, 2–5 reps.','E','Two-hand swing, 10–15 reps.'],
+        ['31','Heavy swing / Pull-up / Floor press / Core','M','Heavy two-hand swings, 8–10 reps with speed.','H','Weighted pull-up/chin-up, 2–4 reps.','L','1-arm floor press, 4–6 reps.','C','Suitcase march + controlled coiling lunge.'],
+        ['32','Sandbag shoulder / Sandbag carry / Half-kneeling press / Conditioning','H','Sandbag shoulder, 1 clean rep each minute. Alternate shoulders.','E','Bear-hug carry, 20–40 ft.','M','Half-kneeling 1-arm press, 4–5 reps.','E','6–10 swings + 3 burpees.'],
+        ['33','Heavy goblet squat / Heavy carry / Strict press / Core','H','100 lb goblet squat, or hardest clean split squat, 2–4 reps.','L','100 lb suitcase carry if clean; otherwise 70 lb.','M','1-arm strict press, 3–4 reps.','C','Odd: weighted pull-up. Even: hanging knee raise.'],
+        ['34','Elevated split squat / Row / Weighted push-up / Conditioning','L','Front-foot elevated split squat, 5–6 reps per side.','M','1-arm row, 4–6 reps.','H','Hardest safe push-up variation, 4–8 reps.','E','8–10 swings + 3 burpees + rest.'],
+        ['35','Coiling reverse lunge / Pull-up / Half-kneeling press / Core','M','Controlled coiling reverse lunge, 3–5 reps per side.','H','Weighted pull-up/chin-up, 2–4 reps.','L','Half-kneeling 1-arm press, 4–6 reps.','C','Suitcase carry with slow, quiet steps.'],
+        ['36','Final sandbag event / Bear-hug carry / Dip / Conditioning','H','Sandbag shoulder, 1 rep each minute, alternate shoulders. If not safe, use heavy split squat.','E','Bear-hug carry, clean short trips.','M','Dips, 2–5 reps.','E','10 swings + 5 squats. Finish with one minute of easy breathing.']
+      ]
+    }
+  };
+
+  function blockHtml(type, name, badge, desc, cue){
+    const cls = badge==='H'?'h':badge==='M'?'m':badge==='L'?'l':'e';
+    const label = badge==='E'?'EVENT / CONDITIONING':badge;
+    return `<div class="block"><div class="block-head"><div class="block-name">${name}</div><span class="badge ${cls}">${label}</span></div><p>${desc}</p>${cue?`<div class="cue">${cue}</div>`:''}</div>`;
+  }
+
+  function renderBlock(n){
+    const b=blocks[n];
+    const root=document.getElementById('block'+n);
+    root.innerHTML = `<div class="panel" style="margin-bottom:12px"><strong>Block ${n}: ${b.label}</strong><div style="color:var(--muted);font-size:.9rem;margin-top:3px">${b.effort}. ${b.notes}</div></div><div class="session-grid"></div>`;
+    const grid=root.querySelector('.session-grid');
+    b.sessions.forEach((s,i)=>{
+      const [num,title,b1,n1,b2,n2,b3,n3,b4,n4]=s;
+      const key=`b${n}-s${num}`;
+      const card=document.createElement('article');
+      card.className='session';
+      card.innerHTML=`
+        <div class="session-top">
+          <div class="session-title-row">
+            <div><div class="session-name">Session ${num}</div><div class="micro">${title}</div></div>
+            <label class="complete-wrap"><input type="checkbox" data-key="${key}" ${completed[key]?'checked':''} aria-label="Mark Session ${num} complete"> Done</label>
+          </div>
+        </div>
+        <div class="session-body"><div class="blocks">
+          ${blockHtml('lower','Block 1 — Lower body',b1,n1,'Use the prescribed side/rep format. H/M/L is effort, not a fixed percentage.')}
+          ${blockHtml('pull','Block 2 — Back / carry / sandbag',b2,n2,'Carries: walk or march. Pulls: stop before grip or shoulder position breaks.')}
+          ${blockHtml('press','Block 3 — Press',b3,n3,'For single-arm work, alternate right and left by minute. Match the weaker side.')}
+          ${blockHtml('finish','Block 4 — Core / conditioning / event',b4,n4,'Do not turn the finisher into a test. Leave enough quality to repeat the next training day.')}
+        </div></div>
+        <div class="session-foot"><span>10-minute blocks unless noted.</span><span>Clean reps only.</span></div>`;
+      grid.appendChild(card);
+    });
+    root.querySelectorAll('input[type=checkbox]').forEach(box=>{
+      box.addEventListener('change',()=>{
+        completed[box.dataset.key]=box.checked;
+        localStorage.setItem(LS,JSON.stringify(completed));
+      });
+    });
+  }
+  renderBlock(1); renderBlock(2); renderBlock(3);
+
+  const tabs=[1,2,3];
+  tabs.forEach(n=>{
+    document.getElementById('tab'+n).addEventListener('click',()=>{
+      tabs.forEach(k=>{
+        const on=k===n;
+        document.getElementById('tab'+k).setAttribute('aria-selected',String(on));
+        document.getElementById('block'+k).classList.toggle('hide',!on);
+      });
+      document.getElementById('tab'+n).focus();
+    });
+  });
+
+  document.getElementById('printBtn').addEventListener('click',()=>window.print());
+  document.getElementById('clearBtn').addEventListener('click',()=>{
+    if(!confirm('Clear all saved completion marks?')) return;
+    localStorage.removeItem(LS);
+    document.querySelectorAll('input[type=checkbox][data-key]').forEach(x=>x.checked=false);
+  });
+})();
+</script>
+</body>
+</html>
