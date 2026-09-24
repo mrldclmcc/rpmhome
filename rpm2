@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Reps per minute: home gear program</title>
+<style>
+:root{--bg:#f7f6f2;--card:#fff;--ink:#1c2230;--mute:#5a6273;--line:#dcdad2;--h:#b4382c;--hb:#f8e3df;--m:#a86a00;--mb:#f8ecd2;--l:#1d6f6a;--lb:#dcefed;--acc:#25406b;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12151c;--card:#1a1e28;--ink:#e9ebf0;--mute:#a3aabb;--line:#2e3442;--h:#ff8f80;--hb:#3a1f1c;--m:#f0b955;--mb:#392a10;--l:#6fd0c8;--lb:#12332f;--acc:#9db8ea}}
+:root[data-theme="dark"]{--bg:#12151c;--card:#1a1e28;--ink:#e9ebf0;--mute:#a3aabb;--line:#2e3442;--h:#ff8f80;--hb:#3a1f1c;--m:#f0b955;--mb:#392a10;--l:#6fd0c8;--lb:#12332f;--acc:#9db8ea}
+html{scroll-padding-top:4rem;height:100%}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:var(--acc)}
+nav{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);border-bottom:1px solid var(--line);z-index:5}
+nav ul{list-style:none;margin:0 auto;padding:.6rem 1rem;display:flex;gap:1.1rem;overflow-x:auto;max-width:64rem;white-space:nowrap}
+nav a{text-decoration:none;font-size:.9rem;font-weight:600;color:var(--mute)}nav a:hover,nav a:focus{color:var(--acc);text-decoration:underline}
+header,section,footer{max-width:64rem;margin:0 auto;padding:2.2rem 1rem}
+header{padding-top:3rem}
+h1{font-size:clamp(2rem,5vw,3rem);line-height:1.15;margin:.2rem 0 1rem;letter-spacing:-.02em}
+h2{font-size:1.65rem;margin:0 0 .8rem;letter-spacing:-.01em;border-top:3px solid var(--acc);padding-top:1rem}
+h3{font-size:1.15rem;margin:1.6rem 0 .5rem}
+p{margin:.6rem 0;max-width:46rem}.lead{font-size:1.2rem;color:var(--mute)}
+.eyebrow{font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--acc)}
+.grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1rem 1.1rem}
+.card h3{margin-top:0}
+.tag{display:inline-block;font-weight:700;font-size:.78rem;border-radius:6px;padding:.05rem .45rem;margin-right:.35rem;letter-spacing:.03em}
+.H{background:var(--hb);color:var(--h)}.M{background:var(--mb);color:var(--m)}.L{background:var(--lb);color:var(--l)}
+.card.H,.card.M,.card.L{background:var(--card)}
+.card.H{border-top:4px solid var(--h)}.card.M{border-top:4px solid var(--m)}.card.L{border-top:4px solid var(--l)}
+.wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+table{border-collapse:collapse;width:100%;min-width:44rem;font-size:.93rem}
+th,td{text-align:left;vertical-align:top;padding:.65rem .75rem;border-bottom:1px solid var(--line)}
+th{font-size:.78rem;text-transform:uppercase;letter-spacing:.07em;color:var(--mute);background:var(--bg)}
+tr:last-child td{border-bottom:0}td:first-child{font-weight:700;white-space:nowrap}
+.note{border-left:4px solid var(--acc);background:var(--card);padding:.7rem 1rem;border-radius:0 10px 10px 0;margin:1rem 0;max-width:46rem}
+.warn{border-left-color:var(--h)}
+ul.plain{padding-left:1.2rem;max-width:46rem}ul.plain li{margin:.35rem 0}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:.2rem 1rem;margin:.5rem 0}
+summary{cursor:pointer;font-weight:600;padding:.6rem 0}summary:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.log{display:grid;gap:.4rem;grid-template-columns:repeat(auto-fill,minmax(5.6rem,1fr))}
+.log label{display:flex;gap:.4rem;align-items:center;border:1px solid var(--line);background:var(--card);border-radius:8px;padding:.45rem .5rem;font-size:.9rem;cursor:pointer}
+.log input{width:1.1rem;height:1.1rem}
+.bar{height:.6rem;background:var(--line);border-radius:9px;overflow:hidden;margin:.6rem 0;max-width:46rem}.bar i{display:block;height:100%;width:0;background:var(--l);transition:width .3s}
+.nums{display:grid;gap:.6rem;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr))}
+.nums label{font-size:.88rem;color:var(--mute);display:block}.nums input{width:100%;font:inherit;padding:.45rem .6rem;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
+button{font:inherit;font-weight:600;padding:.45rem .9rem;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+footer{color:var(--mute);font-size:.9rem;border-top:1px solid var(--line)}
+@media print{nav,button{display:none}}
+</style>
+</head>
+<body>
+<nav aria-label="Sections"><ul>
+<li><a href="#start">Start here</a></li><li><a href="#gear">Equipment and loads</a></li><li><a href="#format">How a session works</a></li><li><a href="#ramp">Ramp-up weeks</a></li><li><a href="#main">Main program</a></li><li><a href="#moves">Movement notes</a></li><li><a href="#track">Tracker</a></li></ul></nav>
+
+<header id="start">
+<p class="eyebrow">Home gear strength and conditioning program</p>
+<h1>Reps per minute</h1>
+<p class="lead">A 12-week plan that builds strength and stamina, and helps you lose body fat, using only a sandbag, kettlebells, a pull-up bar, dip bars, a weighted vest, and a box.</p>
+<div class="grid" style="margin-top:1.4rem">
+<div class="card"><h3>What it is</h3><p>Every session has four blocks of 10 minutes. In each block, you do a small number of good reps at the start of every minute, and you rest for the rest of that minute. The clock sets the pace.</p></div>
+<div class="card"><h3>How long it takes</h3><p>First, 3 ramp-up weeks with 9 sessions. Then 36 main sessions in three blocks of 12. Train 3 or 4 times a week. Finish the sessions in order. If you miss a day, do not skip it. Do it next.</p></div>
+<div class="card"><h3>Who it is for</h3><p>You have trained for years but you have been inactive for about two months. The program is made for eating a little less than you burn. It keeps your muscle and makes you fitter.</p></div>
+</div>
+<div class="note warn"><strong>Safety.</strong> Stop a set if your form breaks down. Warm up for 5 to 10 minutes before each session. Get medical advice first if you have pain, an injury, or a health condition. Drop the sandbag only where the floor and the people around you are safe.</div>
+</header>
+
+<section id="gear">
+<h2>Equipment and how to choose loads</h2>
+<p>You have a 200 lb sandbag with no handles, kettlebells of 100, 70, 50, and 35 lb (one of each), a pull-up bar, dip bars, a 25 lb vest, and a box. You do not have pairs of kettlebells, so most exercises use one kettlebell and work one side at a time. That is a strength, not a problem: it trains your core and shows you any difference between your left and right sides.</p>
+<h3>Three intensity levels</h3>
+<p>Each exercise in the plan is marked heavy, medium, or light. The loads stay well below your maximum, so you can move fast and keep every rep clean. The last set should be harder than the first set, but it should never be a struggle.</p>
+<div class="grid">
+<div class="card H"><h3><span class="tag H">H</span>Heavy</h3><p>The heaviest tool you can move smoothly for all ten minutes. Reps: <strong>3-4</strong> in Blocks 1 and 2, <strong>2-3</strong> in Block 3.</p></div>
+<div class="card M"><h3><span class="tag M">M</span>Medium</h3><p>A middle load, with quick reps. Reps: <strong>4-5</strong> in Blocks 1 and 2, <strong>3-4</strong> in Block 3.</p></div>
+<div class="card L"><h3><span class="tag L">L</span>Light</h3><p>A light load, with fast reps and good control. Reps: <strong>5-6</strong> in Blocks 1 and 2, <strong>4-5</strong> in Block 3.</p></div>
+</div>
+<p>Use the higher number of reps when you feel good and the lower number when you feel tired. Swings, jumps, and carries have their own numbers in the tables.</p>
+<h3>Ways to change difficulty between the kettlebell sizes</h3>
+<p>The jumps between 35, 50, 70, and 100 lb are large. To make an exercise harder or easier, change the position of the load (holding a kettlebell upside down is harder), add the 25 lb vest, use a pause at the hardest point of the rep, or lower the weight slowly. Add or remove these changes when you need a small step.</p>
+<h3>If a set feels too easy</h3>
+<p>Do the prescribed reps first. Then use the rest of the minute for a small extra task, such as 5 hollow rocks or 5 push-ups. This adds work and shortens your rest. Never do the extra task before the main reps.</p>
+</section>
+
+<section id="format">
+<h2>How a session works</h2>
+<p>Every session has four blocks of 10 minutes: <strong>lower body, back, press,</strong> and <strong>core or conditioning</strong>. Use a timer. At the start of every minute, do your reps. When you finish, rest until the next minute begins. Fast reps give you more rest. Rest 1 to 2 minutes between blocks. In total, one session takes about 40 minutes of work, or 50 to 60 minutes with warm-up.</p>
+<div class="note">Follow this rule for every rep: never lose good form to go faster, and never lose speed to lift more weight.</div>
+<h3>Three ways to work one side at a time</h3>
+<div class="grid">
+<div class="card"><h3>1. Alternate sides by minute</h3><p>Do the left side in odd minutes and the right side in even minutes. Each side gets five sets, with almost two minutes of rest between them. Use this for <strong>heavy</strong> exercises.</p></div>
+<div class="card"><h3>2. Both sides in one minute</h3><p>Do all your reps on the left side, then all your reps on the right side, in the same minute. The prescribed number is <em>per side</em>. Use this for <strong>medium</strong> and <strong>light</strong> exercises.</p></div>
+<div class="card"><h3>3. Switch every rep</h3><p>Change sides after each rep. This works well for swings, alternating lunges, and lifting the sandbag onto alternating shoulders.</p></div>
+</div>
+<p>If a table gives one of these formats, use it. If not, use format 1 for heavy exercises and format 2 for the others.</p>
+<h3>Finding a load when you do not know it</h3>
+<p>Start with the lightest kettlebell and move up one size every 2 minutes, while the reps stay fast and clean. Stop going up when the speed drops. Use the size just below that for the rest of the block. The ramp-up weeks use this method to find your numbers.</p>
+</section>
+
+<section id="ramp">
+<h2>Ramp-up weeks: sessions R1 to R9</h2>
+<p>These three weeks get your body ready after time off, and they help you find the right loads. Train 3 times a week with at least one rest day between sessions. Every session has a warm-up, and you always finish with reps left in you. Write your results in the tracker at the bottom of this page.</p>
+<div class="wrap"><table>
+<thead><tr><th>Week</th><th>Timing</th><th>Session 1</th><th>Session 2</th><th>Session 3</th></tr></thead>
+<tbody>
+<tr><td>1 <br><small>Wake up</small></td><td>Three blocks of 10 minutes. Work every <strong>2 minutes</strong> (5 sets per block).</td>
+<td><strong>Lower:</strong> single-leg Romanian deadlift, 4 reps per side. Move up one kettlebell size every 2 minutes, from 35 lb. <strong>Back:</strong> 2 pull-ups. <strong>Press:</strong> 5 push-ups.</td>
+<td><strong>Lower:</strong> goblet split squat with the back foot on the box, 4 reps per side, moving up in size. <strong>Back:</strong> one-arm row, 6 reps per side, moving up in size. <strong>Press:</strong> one-arm press with the 35 lb, 3 reps per side.</td>
+<td><strong>Test:</strong> bear hug carry (see below). <strong>Lower:</strong> sandbag ground to lap, 3 reps. <strong>Press:</strong> 5 dips.</td></tr>
+<tr><td>2 <br><small>Build</small></td><td>Four blocks of <strong>8 minutes</strong>. Work every <strong>minute</strong>. Use only medium loads.</td>
+<td><strong>Lower:</strong> hinge (single-leg Romanian deadlift, 4 per side). <strong>Back:</strong> 3 chin-ups. <strong>Press:</strong> one-arm press, 35 lb, 4 per side. <strong>Core:</strong> 5 hanging knee raises.</td>
+<td><strong>Lower:</strong> goblet squat to the box, 5 reps. <strong>Back:</strong> one-arm row, 4 per side. <strong>Press:</strong> feet-raised push-ups, 6. <strong>Conditioning:</strong> 3 burpees and 8 squats.</td>
+<td><strong>Lower:</strong> two-hand swing, 8 reps. <strong>Back:</strong> suitcase carry, 40 ft. <strong>Press:</strong> one-arm floor press, 4 per side. <strong>Core:</strong> 6 kettlebell Russian twists per side.</td></tr>
+<tr><td>3 <br><small>Full clock</small></td><td>Four blocks of <strong>10 minutes</strong>. Work every minute. Use light and medium loads only.</td>
+<td>Same as Week 2, Session 1, with 10-minute blocks. <strong>Test:</strong> pull-ups, most you can do in one set.</td>
+<td>Same as Week 2, Session 2, with 10-minute blocks. <strong>Test:</strong> one-arm press with the 70 lb, most reps in one set.</td>
+<td>Same as Week 2, Session 3, with 10-minute blocks. <strong>Test:</strong> dips (most in one set), and the box load below.</td></tr>
+</tbody></table></div>
+<h3>The tests</h3>
+<ul class="plain">
+<li><strong>Bear hug carry:</strong> Lift the sandbag to your chest and hug it. Walk until your arms or grip must stop. Measure the distance. If you can carry it about 50 ft, the bag is your heavy carry. If not, use it for short carries and lap lifts, and use kettlebells for long carries.</li>
+<li><strong>Box load:</strong> Load the bag from the floor onto the box. Start with a low box height. Use the highest height you can do for 3 clean reps as your heavy height.</li>
+<li><strong>Ramp tests:</strong> The load you keep for the last 2 minutes of a ramp is your working load for that exercise. Write it down.</li>
+</ul>
+<div class="note">You may repeat the ramp-up week if you feel sore or very tired. Start the main program when you have done all 9 sessions and feel fresh and ready.</div>
+</section>
+
+<section id="main">
+<h2>Main program: 36 sessions</h2>
+<p>The program has three blocks of 12 sessions. Each block repeats the same four session types (A, B, C, D) three times. Do them in the order A, B, C, D, A, B, C, D, A, B, C, D. Each time you repeat a session type, use the progression step listed under the table.</p>
+
+<h3>Block 1: build (sessions 1 to 12)</h3>
+<p>Goal: learn the movements and build a base. Reps: heavy 3-4, medium 4-5, light 5-6.</p>
+<div class="wrap"><table><thead><tr><th>Session</th><th>Lower body</th><th>Back</th><th>Press</th><th>Core or conditioning</th></tr></thead><tbody>
+<tr><td>A</td><td><span class="tag H">H</span>Single-leg Romanian deadlift, one kettlebell (70 or 100 lb). Format 1.</td><td><span class="tag L">L</span>Suitcase carry, 50 lb, 40 ft. Switch hands each minute.</td><td><span class="tag M">M</span>One-arm strict press, 35 lb. Format 2.</td><td>Odd minutes: 3 chin-ups. Even minutes: 5 hanging knee raises.</td></tr>
+<tr><td>B</td><td><span class="tag L">L</span>Goblet squat to the box, 50 or 70 lb. Fast up.</td><td><span class="tag M">M</span>One-arm row, 70 lb. Format 2.</td><td><span class="tag H">H</span>Dips, body weight. 3-4 reps.</td><td>3 burpees and 10 squats each minute.</td></tr>
+<tr><td>C</td><td><span class="tag M">M</span>Two-hand kettlebell swing, 70 lb. 8 reps.</td><td><span class="tag H">H</span>Pull-ups, body weight. 3-4 reps.</td><td><span class="tag L">L</span>Z press (seated on the floor), 35 lb. Format 2.</td><td>Odd minutes: 7 Russian twists per side, 35 lb. Even minutes: 8 rows per side, 50 lb.</td></tr>
+<tr><td>D</td><td><span class="tag H">H</span>Split squat, back foot on the box, 100 lb goblet hold. Format 1.</td><td><span class="tag L">L</span>Sandbag ground to lap.</td><td><span class="tag M">M</span>Push-ups, feet on the box.</td><td>3 burpees and 5 kettlebell halos, 35 lb.</td></tr>
+</tbody></table></div>
+<ul class="plain"><li><strong>Cycle 1 (sessions 1-4):</strong> Use your ramp-up loads and a smooth tempo.</li><li><strong>Cycle 2 (sessions 5-8):</strong> Add a 1-second pause at the hardest point of each main rep.</li><li><strong>Cycle 3 (sessions 9-12):</strong> Use the top of each rep range, and add the extra task in the rest of the minute.</li></ul>
+
+<h3>Block 2: load (sessions 13 to 24)</h3>
+<p>Goal: add weight and use the sandbag more. Reps: same as Block 1. Wear the vest for dips, push-ups, and split squats.</p>
+<div class="wrap"><table><thead><tr><th>Session</th><th>Lower body</th><th>Back</th><th>Press</th><th>Core or conditioning</th></tr></thead><tbody>
+<tr><td>A</td><td><span class="tag L">L</span>Single-leg Romanian deadlift, 50 lb. Fast. Format 2.</td><td><span class="tag H">H</span>Bear hug carry, sandbag. Use the distance from your test, at most 30 ft.</td><td><span class="tag M">M</span>Push press, 50 lb. Format 2.</td><td>Plank, 40 seconds each minute.</td></tr>
+<tr><td>B</td><td><span class="tag H">H</span>Box step-up, 100 lb goblet hold. Format 1.</td><td><span class="tag M">M</span>One-arm row, 100 lb. Format 2.</td><td><span class="tag L">L</span>Push-ups, hands on the box, vest on.</td><td>3 pull-ups, 5 hand-release push-ups, 10 jumping squats.</td></tr>
+<tr><td>C</td><td><span class="tag M">M</span>One-arm swing, 70 lb. Switch hands every rep. 10 reps.</td><td><span class="tag L">L</span>Chin-ups, body weight. 3 reps.</td><td><span class="tag H">H</span>Dips, vest on.</td><td>Odd minutes: 6 hanging leg raises. Even minutes: 30 seconds of one-arm rows, 50 lb.</td></tr>
+<tr><td>D</td><td><span class="tag M">M</span>Bear hug reverse lunge, sandbag. Format 1.</td><td><span class="tag H">H</span>Sandbag ground to lap, then lap to the box.</td><td><span class="tag L">L</span>One-arm floor press, 70 lb. Format 2.</td><td>Five rounds: 30 seconds of squats, 30 seconds of burpees, 30 seconds rest, then repeat for a second set.</td></tr>
+</tbody></table></div>
+<ul class="plain"><li><strong>Cycle 1 (sessions 13-16):</strong> Use the loads in the table.</li><li><strong>Cycle 2 (sessions 17-20):</strong> Move one exercise per session up to the next kettlebell size, if speed stays fast.</li><li><strong>Cycle 3 (sessions 21-24):</strong> Add 1 second of slow lowering to each heavy rep.</li></ul>
+
+<h3>Block 3: peak (sessions 25 to 36)</h3>
+<p>Goal: your strongest, fastest work. Reps: heavy 2-3, medium 3-4, light 4-5. Keep the vest on for pull-ups, dips, and split squats.</p>
+<div class="wrap"><table><thead><tr><th>Session</th><th>Lower body</th><th>Back</th><th>Press</th><th>Core or conditioning</th></tr></thead><tbody>
+<tr><td>A</td><td><span class="tag H">H</span>Single-leg Romanian deadlift, 100 lb, vest on. Format 1.</td><td><span class="tag M">M</span>Suitcase carry, 100 lb, 30 ft. Switch hands each minute.</td><td><span class="tag L">L</span>One-arm press, 35 lb, with a pause.</td><td>Odd minutes: 3 chin-ups. Even minutes: 6 hanging knee raises.</td></tr>
+<tr><td>B</td><td><span class="tag M">M</span>Box jump or fast step-up, 6 reps.</td><td><span class="tag L">L</span>One-arm row, 70 lb, with a pause.</td><td><span class="tag H">H</span>Push-ups, feet on the box, vest on.</td><td>Push-up ladder: 1 push-up, then 2, then 3, up to the top and back down.</td></tr>
+<tr><td>C</td><td><span class="tag L">L</span>Two-hand swing, 100 lb. 6 reps.</td><td><span class="tag H">H</span>Pull-ups, vest on. 2 reps.</td><td><span class="tag M">M</span>One-arm strict press, 50 lb. Format 1.</td><td>Odd minutes: 7 Russian twists per side. Even minutes: 6 one-arm rows per side, 70 lb.</td></tr>
+<tr><td>D</td><td><span class="tag H">H</span>Split squat, vest on, 100 lb goblet hold. Format 1.</td><td><span class="tag M">M</span>Sandbag ground to lap, then lap to a higher box height.</td><td><span class="tag L">L</span>Dips, vest on. 3 reps.</td><td>Legs finisher: 6 lunges, 6 jumping lunges, 7 squats, and 7 jump squats each minute.</td></tr>
+</tbody></table></div>
+<ul class="plain"><li><strong>Cycle 1 (sessions 25-28):</strong> Use the loads in the table.</li><li><strong>Cycle 2 (sessions 29-32):</strong> Add a 2-second pause on heavy reps.</li><li><strong>Cycle 3 (sessions 33-36):</strong> Test yourself. Retry your ramp-up tests and compare. On session 36, try one clean ground-to-shoulder lift with the sandbag.</li></ul>
+</section>
+
+<section id="moves">
+<h2>Movement notes</h2>
+<details><summary>Single-leg Romanian deadlift</summary><p>Hold the kettlebell in the hand opposite your standing leg. Push your hips back as you lower the weight down your leg. Keep your back flat. Stand up by squeezing your glutes. If you lose balance, touch the back toe lightly to the floor as a kickstand.</p></details>
+<details><summary>Sandbag bear hug carry</summary><p>Squat down, hug the bag against your chest with your arms locked tight, and stand up. Walk with short steps and keep your chest up. Put the bag down before your grip fails.</p></details>
+<details><summary>Sandbag ground to lap, lap to box</summary><p>Set your feet close to the bag and get your hips low. Pull the bag up to your thighs, and then push your hips forward to bring it to lap height. For the box, drive your hips and slide the bag up onto the box. Keep your back flat and drop the bag down safely.</p></details>
+<details><summary>Sandbag ground to shoulder (test only)</summary><p>Lift the bag to your lap, then pull it over one shoulder with a strong hip drive and a hug. Do this only once in the test. Use a clear floor space.</p></details>
+<details><summary>Bear hug reverse lunge</summary><p>Hug the bag, and step one foot back until the back knee nearly touches the floor. Push through the front foot to stand. Use format 1 for this exercise.</p></details>
+<details><summary>One-arm strict press and Z press</summary><p>Squeeze the glutes and keep your ribs down. Press the kettlebell straight up until your arm is beside your ear. For a Z press, sit on the floor with your legs straight in front of you. The lack of leg drive makes the press harder on the core.</p></details>
+<details><summary>Suitcase carry</summary><p>Hold one kettlebell at your side like a suitcase. Stand tall and do not lean toward the weight. Switch hands each minute.</p></details>
+<details><summary>Two-hand and one-arm swing</summary><p>Push your hips back, then snap them forward. The kettlebell rises to chest height by itself, so your arms only guide it. For a one-arm swing, change hands at the top when the kettlebell is weightless.</p></details>
+<details><summary>Goblet split squat and box step-up</summary><p>Hold the kettlebell against your chest. For the split squat, place your back foot on the box and lower your back knee toward the floor. For the step-up, put your full foot on the box and stand up through the front leg only.</p></details>
+</section>
+
+<section id="track">
+<h2>Tracker</h2>
+<p>Tap a session to mark it done. Your progress stays on this device.</p>
+<div class="bar" aria-hidden="true"><i id="pb"></i></div>
+<p id="pt" aria-live="polite"></p>
+<h3>Ramp-up</h3><div class="log" id="l0"></div>
+<h3>Block 1</h3><div class="log" id="l1"></div>
+<h3>Block 2</h3><div class="log" id="l2"></div>
+<h3>Block 3</h3><div class="log" id="l3"></div>
+<h3>My numbers</h3>
+<p>Write down the numbers from your ramp-up tests.</p>
+<div class="nums" id="nums"></div>
+<p style="margin-top:1rem"><button id="rs" type="button">Clear tracker and numbers</button></p>
+</section>
+
+<footer>This program is general information, not medical advice. Adjust the plan to how you feel, and stop if something hurts.</footer>
+
+<script>
+(function(){
+var S={};
+try{S=JSON.parse(localStorage.getItem("rpm")||"{}")}catch(e){}
+function save(){try{localStorage.setItem("rpm",JSON.stringify(S))}catch(e){}}
+var n=[["l0","R",9],["l1","",12],["l2","",12],["l3","",12]],off=0,total=0,i,j;
+n.forEach(function(g,gi){
+var box=document.getElementById(g[0]);
+for(j=1;j<=g[2];j++){
+var num=g[1]?g[1]+j:off+j,id=g[1]?"r"+j:"s"+num;
+var lb=document.createElement("label"),cb=document.createElement("input");
+cb.type="checkbox";cb.checked=!!S[id];cb.dataset.k=id;
+cb.addEventListener("change",function(){S[this.dataset.k]=this.checked;save();upd()});
+lb.appendChild(cb);lb.appendChild(document.createTextNode(g[1]?"R"+j:"S"+num));
+box.appendChild(lb);total++}
+if(!g[1])off+=g[2]});
+var f=["Single-leg Romanian deadlift load","Split squat load","One-arm row load","Bear hug carry distance","Box height for loads","Pull-ups (max)","Dips (max)","One-arm press, 70 lb (reps)"],nb=document.getElementById("nums");
+f.forEach(function(t,k){
+var l=document.createElement("label"),inp=document.createElement("input");
+l.textContent=t;inp.type="text";inp.value=S["n"+k]||"";
+inp.addEventListener("input",function(){S["n"+k]=inp.value;save()});
+l.appendChild(inp);nb.appendChild(l)});
+function upd(){
+var d=0,ks=document.querySelectorAll("#track input[type=checkbox]");
+ks.forEach(function(c){if(c.checked)d++});
+document.getElementById("pb").style.width=Math.round(d/total*100)+"%";
+document.getElementById("pt").textContent=d+" of "+total+" sessions done.";}
+document.getElementById("rs").addEventListener("click",function(){
+if(!confirm("Clear all progress and numbers?"))return;
+S={};save();location.reload()});
+upd();
+})();
+</script>
+</body>
+</html>
